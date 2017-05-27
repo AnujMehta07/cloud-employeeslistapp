@@ -1,0 +1,39 @@
+_schema-version: "2.0"
+ID: com.sap.cloud.sample.employeeslist
+version: 1.3.10
+modules:
+ - name: employeeslistui
+   type: javascript.nodejs
+   path: web
+   build-parameters:
+     ignore: [".gitignore", ".cfignore", pom.xml, target/, sapui5/, node/]
+     builder: npm
+   requires:
+    - name: employeeslist-service
+      group: destinations
+      properties:
+        name: employeesService
+        url: ~{url}
+               
+ - name: employeeslist-java
+   type: java.tomcat
+   path: java
+   build-parameters:
+     ignore: [ pom.xml, target/, node/]
+     builder: maven
+     maven-opts:
+        command: [ clean, verify ]
+   parameters:
+   provides:
+    - name: employeeslist-service
+      properties:
+        url: "${default-url}"
+   requires:
+    - name: hana-schema
+     
+resources:
+      
+ - name: hana-schema
+   type: com.sap.xs.hana-schema
+   
+ 

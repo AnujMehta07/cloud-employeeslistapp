@@ -1,0 +1,49 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m" controllerName="employeeslist.controller.View1" displayBlock="true">
+	<App>
+		<pages>
+			<Page title="{i18n>title}" icon="sap-icon://syringe" id="idpage">
+				<content>
+					<VBox class="sapUiSmallMargin">
+						<f:SimpleForm id="SimpleFormChange354" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"
+							labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="editableForm">
+							<f:content>
+								<Label text="FirstName"/>
+								<Input value="" id="idfirstname"/>
+								<Label text="LastName"/>
+								<Input value="" id="idlastname"></Input>
+								<Label text=""/>
+								<Button text="Create" type="Accept" press="onPress"></Button>
+							</f:content>
+						</f:SimpleForm>
+					</VBox>
+					<Table id="idPersonlist" inset="false" items="{ path: 'employees>/Employees', sorter: { path: 'FirstName' } }">
+						<headerToolbar>
+							<Toolbar>
+								<content>
+									<Title text="Employees list" level="H2"/>
+								</content>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column width="12em">
+								<Text text="FirstName"/>
+							</Column>
+							<Column hAlign="Right">
+								<Text text="LastName"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<ObjectIdentifier title="{employees>FirstName}"/>
+									<ObjectIdentifier title="{employees>LastName}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

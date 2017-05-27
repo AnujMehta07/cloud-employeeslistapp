@@ -1,0 +1,22 @@
+{
+  "welcomeFile": "index.html",
+  "authenticationMethod": "none",
+  "routes": [
+  {
+    "source": "/employeeslist.svc/.*",
+	"destination": "employeesService"
+  },
+  {
+    "source": "/employeeslist.svc/Employees",
+	"destination": "employeesService"
+  },
+  {
+    "source": "/employeeslist.svc/$metadata",
+	"destination": "employeesService"
+  },
+  {
+    "source": "^/(.*)",
+    "localDir": "webapp"
+  }
+]
+}
